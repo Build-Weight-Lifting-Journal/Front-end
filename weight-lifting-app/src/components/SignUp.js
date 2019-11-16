@@ -43,13 +43,17 @@ function Signup(props) {
           placeholder="username"
           value={payload.username}
           onChange={handleChange}
+          required
         />
         <input
           name="password"
           type="password"
           placeholder="password"
+          minLength={5}
+          maxLength={10}
           value={payload.password}
           onChange={handleChange}
+          required
         />
         <input
           name="firstName"
@@ -57,6 +61,7 @@ function Signup(props) {
           placeholder="First Name"
           value={payload.firstName}
           onChange={handleChange}
+          required
         />
         <input
           name="lastName"
@@ -64,6 +69,7 @@ function Signup(props) {
           placeholder="Last Name"
           value={payload.lastName}
           onChange={handleChange}
+          required
         />
         <input
           name="email"
@@ -71,6 +77,7 @@ function Signup(props) {
           placeholder="email"
           value={payload.email}
           onChange={handleChange}
+          required
         />
 
         <button type="submit">Submit</button>

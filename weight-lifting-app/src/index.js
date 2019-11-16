@@ -8,7 +8,7 @@ import logger from "redux-logger";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { authReducer } from "./reducers/reducers";
+import { authReducer } from "./reducers/signupReducer";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const store = createStore(authReducer, applyMiddleware(thunk, logger));

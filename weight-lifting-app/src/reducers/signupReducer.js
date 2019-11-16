@@ -1,4 +1,6 @@
-import { SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_ERROR } from "../actions/actions";
+import { SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_ERROR, 
+  // LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE 
+} from "../actions/actions";
 
 const initialState = {
   payload: {},
