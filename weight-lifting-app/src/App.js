@@ -1,17 +1,16 @@
-import React
-// , {useState} 
-from "react";
+import React from "react"; // , {useState}
 import "./App.css";
+import "./App.scss";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
+import NewExercise from "./components/ExerciseForm";
 
 const User = ({ match }) => {
   return <h1>Welcome User {match.params.username}</h1>;
 };
 
 function App() {
-
   // const [loggedIn, setLoggedIn] = useState();
 
   // loginHandle = () => {
@@ -37,6 +36,7 @@ function App() {
               Login
             </NavLink>
           </li>
+          <NewExercise />;
         </ul>
 
         <hr />
