@@ -4,7 +4,7 @@ import axios from "axios";
 import { withFormik } from "formik";
 import * as yup from "yup";
 
-const NewExercise = ({ erros, touched, status }) => {
+const NewExercise = ({ errors, touched, status }) => {
   const [exercise, setExercise] = useState([]);
 
   useEffect(() => {
@@ -14,44 +14,47 @@ const NewExercise = ({ erros, touched, status }) => {
   }, [exercise, status]);
 
   return (
-    <>
-      <div class="field">
-        <label class="label">Exercise</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Bench Press, Squats, Etc."
-          ></input>
-        </div>
-      </div>
+    <Form>
+      {touched.exercise && errors.exercise && (
+        <p className="error">{errors.exerise}</p>
+      )}
+      <label>
+        <span>Exercise</span>
+        <Field
+          type="text"
+          name="exercise"
+          placeholder="Bench Press, Squats, Etc."
+        />
+      </label>
 
-      <div class="field">
-        <label class="label">Reps</label>
-        <div class="control">
-          <input class="input" type="number" placeholder="10"></input>
-        </div>
-      </div>
+      {touched.reps && errors.reps && <p className="error">{errors.reps}</p>}
+      <label>
+        <span>Reps</span>
+        <Field type="number" name="reps" placeholder="10 reps" />
+      </label>
 
-      <div class="field">
-        <label class="label">Sets</label>
-        <div class="control">
-          <input class="input" type="number" placeholder="3 sets"></input>
-        </div>
-      </div>
+      {touched.sets && errors.sets && <p className="error">{errors.sets}</p>}
+      <label>
+        <span>Sets</span>
+        <Field type="number" name="sets" />
+      </label>
 
-      <div class="field">
-        <label class="label">Weight</label>
-        <div class="control">
-          <input class="input" type="number" placeholder="125 lbs"></input>
-        </div>
-      </div>
+      {touched.weight && errors.weight && (
+        <p className="error">{errors.weight}</p>
+      )}
+      <label>
+        <span>Weight</span>
+        <Field type="number" name="weight" placeholder="100" />
+        <span>Lbs</span>
+      </label>
 
-      <button class="button is-link" type="submit">
-        Submit
-      </button>
-    </>
+      <button type="submit">Submit</button>
+    </Form>
   );
 };
 
-export default NewExercise;
+export default withFormik({
+  mapPropsToValues: values => {
+    return {};
+  }
+})(NewExercise);
