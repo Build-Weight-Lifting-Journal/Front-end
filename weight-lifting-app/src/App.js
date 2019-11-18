@@ -1,6 +1,5 @@
 import React from "react"; // , {useState}
 import "./App.css";
-import "./App.scss";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
@@ -36,7 +35,6 @@ function App() {
               Login
             </NavLink>
           </li>
-          <NewExercise />;
         </ul>
 
         <hr />
@@ -49,6 +47,7 @@ function App() {
             return <h1>Weight Lifting App</h1>;
           }}
         />
+        <NewExercise />
         {/* <h1>Weight Lifting App</h1> */}
         {/* <Signup /> */}
         {/* <Login/> */}
