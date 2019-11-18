@@ -3,15 +3,12 @@ import "./App.css";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
-<<<<<<< HEAD
-import Dashboard from "./components/Dashboard";
-import Exercise from "./components/ExerciseCard"
-import AddExercise from "./components/AddExercise"
+// import Dashboard from "./components/Dashboard";
+// import Exercise from "./components/ExerciseCard"
+// import AddExercise from "./components/AddExercise"
 
 import PrivateRoute from "./components/PrivateRoute";
-=======
 import NewExercise from "./components/ExerciseForm";
->>>>>>> master
 
 const User = ({ match }) => {
   return <h1>Welcome User {match.params.username}</h1>;

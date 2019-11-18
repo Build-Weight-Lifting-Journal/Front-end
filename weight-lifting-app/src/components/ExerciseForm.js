@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // import React, { useState, useEffect } from "react"
 // import { connect } from "react-redux";
 // import {api} from "../utils/api";
@@ -71,6 +72,8 @@
 //   { deleteEvent }
 // )(Exercise);
 =======
+=======
+>>>>>>> cff30e5a39684b4a483740622f8b788ecbc75499
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withFormik, Form, Field } from "formik";
@@ -204,4 +207,8 @@ export default withFormik({
       });
   }
 })(NewExercise);
+<<<<<<< HEAD
 >>>>>>> master
+=======
+
+>>>>>>> cff30e5a39684b4a483740622f8b788ecbc75499
