@@ -19,7 +19,7 @@ function Signup(props) {
   };
 
   const handleSubmit = event => {
-    event.preventDefault();
+    // event.preventDefault();
     props.register(payload);
     reset();
     // .then(() => {
