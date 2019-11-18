@@ -79,7 +79,7 @@ const NewExercise = ({ errors, touched, status }) => {
       {touched.sets && errors.sets && <p className="error">{errors.sets}</p>}
       <label>
         <span>Sets</span>
-        <Fields type="number" name="sets" />
+        <Fields type="number" name="sets" placeholder="3" />
       </label>
 
       {touched.weight && errors.weight && (
