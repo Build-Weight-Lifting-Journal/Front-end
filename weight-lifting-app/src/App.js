@@ -3,6 +3,11 @@ import "./App.css";
 import { Route, NavLink } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+// import Exercise from "./components/ExerciseCard"
+// import AddExercise from "./components/AddExercise"
+
+import PrivateRoute from "./components/PrivateRoute";
 import NewExercise from "./components/ExerciseForm";
 import ExerciseCard from "./components/ExerciseCard";
 
@@ -36,6 +41,9 @@ function App() {
               Login
             </NavLink>
           </li>
+            <NavLink to="/dashboard" exact activeStyle={{ color: "green" }}>
+              Dashboard
+            </NavLink>
         </ul>
 
         <hr />
@@ -51,9 +59,16 @@ function App() {
         <NewExercise />
        <ExerciseCard />
       </div>
+     <Route path="/dashboard" component={Dashboard} />
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
+<<<<<<< HEAD
       <Route path="/user/:username" exact component={User} />
+=======
+      {/* <Route path="/user/:username" exact component={User} /> */}
+      {/* <PrivateRoute exact path="/dashboard" component={Exercise} /> */}
+{/* <PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> */}
+>>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28
     </div>
   );
 }

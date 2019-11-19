@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
@@ -145,4 +144,8 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { addTask }
+<<<<<<< HEAD
 )(ExForm);
+=======
+)(ExForm);
+>>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28

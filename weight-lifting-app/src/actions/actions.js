@@ -1,5 +1,4 @@
 import { api } from "../utils/api";
-import axios from "axios";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -86,7 +85,11 @@ export const addTask = (formValues, history, push) => dispatch => {
   api()
     .post("/restricted/exercises", makeTask)
     .then(response => {
+<<<<<<< HEAD
       history.push("/dashboard")
+=======
+      // history("/dashboard")
+>>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28
       console.log(response);
       dispatch({ type: NEW_TASK_SUCCESS });
 
@@ -108,7 +111,11 @@ export const editEvent = (updateEvent, id, history) => dispatch => {
     .then(response => {
       console.log(response);
       dispatch({ type: EDIT_SUCCESS });
+<<<<<<< HEAD
       history.push("/dashboard");
+=======
+      // history.push("/dashboard");
+>>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28
     })
     .catch(error => {
       console.log(error);
