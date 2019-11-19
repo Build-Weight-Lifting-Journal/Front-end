@@ -15,7 +15,14 @@ const CreateJournal = props => {
     axios.post("restricted/journals/", props)
 
     return (
-        <h1>1</h1>
+        <div class="control">
+  <div class="select">
+    <select>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </div>
+</div>
     )
 
 }
