@@ -3,6 +3,8 @@ import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import {addTask} from "../actions/actions";
 
 const ExerciseForm = styled(Form)`
   display: flex;
@@ -65,7 +67,7 @@ const NewExercise = ({ errors, touched, status }) => {
         <span>Exercise</span>
         <Fields
           type="text"
-          name="exercise"
+          name="name"
           placeholder="Bench Press, Squats, Etc."
         />
       </label>
@@ -95,17 +97,17 @@ const NewExercise = ({ errors, touched, status }) => {
   );
 };
 
-export default withFormik({
+const ExForm = withFormik ({
   mapPropsToValues: values => {
     return {
-      exercise: values.species || "",
+      name: values.name || "",
       reps: values.reps || "",
       sets: values.sets || "",
       weight: values.weight || ""
     };
   },
   validationSchema: yup.object().shape({
-    exercise: yup.string().required("Exercise name needed."),
+    name: yup.string().required("Exercise name needed."),
     reps: yup
       .number()
       .positive("Do at least 1!")
@@ -119,15 +121,28 @@ export default withFormik({
       .positive("You can't lift negative lbs :)")
       .required("How much weight?")
   }),
-  handleSubmit: (values, { setValues }) => {
+  handleSubmit: (values, { setSubmitting, props, resetForm }) => {
     console.log(values);
-    axios
-      .post("#", values)
-      .then(response => {
-        setValues(response.data);
-      })
-      .catch(error => {
-        console.log("Error: ", error);
-      });
+    props.addTask(values)
+    setSubmitting(false)
+    resetForm()
+   
+    // axios
+    //   .post("#", values)
+    //   .then(response => {
+    //     setValues(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.log("Error: ", error);
+    //   });
   }
 })(NewExercise);
+
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  { addTask }
+)(ExForm);

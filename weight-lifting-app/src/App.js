@@ -1,9 +1,10 @@
 import React from "react"; // , {useState}
 import "./App.css";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import NewExercise from "./components/ExerciseForm";
+import ExerciseCard from "./components/ExerciseCard";
 
 const User = ({ match }) => {
   return <h1>Welcome User {match.params.username}</h1>;
@@ -17,7 +18,7 @@ function App() {
   // }
 
   return (
-    <Router>
+    <div>
       <div className="App">
         <ul>
           <li>
@@ -48,14 +49,12 @@ function App() {
           }}
         />
         <NewExercise />
-        {/* <h1>Weight Lifting App</h1> */}
-        {/* <Signup /> */}
-        {/* <Login/> */}
+       <ExerciseCard />
       </div>
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
       <Route path="/user/:username" exact component={User} />
-    </Router>
+    </div>
   );
 }
 
