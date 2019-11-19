@@ -1,6 +1,4 @@
 import { api } from "../utils/api";
-import axios from "axios";
-
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -76,14 +74,21 @@ export const NEW_TASK_START = "NEW_TASK_START";
 export const NEW_TASK_SUCCESS = "NEW_TASK_SUCCESS";
 export const NEW_TASK_ERROR = "NEW_TASK_ERROR";
 
-export const addTask = (makeTask, history) => dispatch => {
+export const addTask = (formValues, history, push) => dispatch => {
+  const makeTask = {
+    name: formValues.name,
+    sets: formValues.sets,
+    reps: formValues.reps,
+    weight: formValues.weight
+  };
   dispatch({ type: NEW_TASK_START });
   api()
     .post("/restricted/exercises", makeTask)
     .then(response => {
+      // history("/dashboard")
       console.log(response);
-      history.push("/dashboard");
       dispatch({ type: NEW_TASK_SUCCESS });
+
     })
     .catch(error => {
       console.log(error);
@@ -102,7 +107,7 @@ export const editEvent = (updateEvent, id, history) => dispatch => {
     .then(response => {
       console.log(response);
       dispatch({ type: EDIT_SUCCESS });
-      history.push("/dashboard");
+      // history.push("/dashboard");
     })
     .catch(error => {
       console.log(error);
@@ -116,16 +121,8 @@ export const DELETE_SUCCESS = "DELETE_SUCCESS";
 
 export const deleteEvent = (id, history) => dispatch => {
   dispatch({ type: DELETE_START });
-        // api().delete(`/restricted/exercises/${id}`)
-        //     .then(result => {
-        //         console.log("workout was TERMINATED")
-                
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //         setExercise([ ...exercise, workout])
-        //     })
-  api().delete(`/restricted/exercises/${id}`)
+  api()
+    .delete(`/restricted/exercises/:${id}`)
     .then(response => {
       console.log(response);
       dispatch({ type: DELETE_SUCCESS });
@@ -149,37 +146,10 @@ export const fetchData = () => dispatch => {
     .get("/restricted/exercises")
     .then(response => {
       console.log(response);
-      dispatch({ type: FETCH_SUCCESS, payload: response.data.exercises });
+      dispatch({ type: FETCH_SUCCESS, payload: response.data });
     })
     .catch(error => {
       console.log(error);
       dispatch({ type: FETCH_FAILURE });
     });
 };
-
-
-export const BEGIN_EDIT = "BEGIN_EDIT";
-export const REMOVE_EXERCISE = "REMOVE_EXERCISE";
-
-
-export const beginEdit = (exerciseForm) => {
-    return ({
-        type: BEGIN_EDIT,
-        payload: exerciseForm
-    })
-}
-
-export const removeExercise = (exercise) => {
-    return ({
-        type:REMOVE_EXERCISE,
-        payload: exercise
-    })
-}
-
-// export const getExercises = () => dispatch => {
-//     api().get('https://weight-lift-1.herokuapp.com/api/exercises')
-//     .then(({data}) => {
-//         dispatch(addExercise(data))
-//     })
-//     .catch(err => console.log(err))
-// }

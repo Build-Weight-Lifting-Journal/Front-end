@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
-// import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard";
 // import Exercise from "./components/ExerciseCard"
 // import AddExercise from "./components/AddExercise"
 
@@ -65,7 +65,7 @@ function App() {
       <Route path="/login" exact component={Login} />
       {/* <Route path="/user/:username" exact component={User} /> */}
       {/* <PrivateRoute exact path="/dashboard" component={Exercise} /> */}
-<PrivateRoute exact path="/restricted/exercises" component={AddExercise} />
+{/* <PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> */}
     </div>
   );
 }

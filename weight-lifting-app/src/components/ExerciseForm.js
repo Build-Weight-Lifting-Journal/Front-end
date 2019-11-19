@@ -1,84 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-// import React, { useState, useEffect } from "react"
-// import { connect } from "react-redux";
-// import {api} from "../utils/api";
-// import {deleteEvent} from "../actions/actions";
-// import {Link} from "react-router-dom";
-
-
-// function Exercise(props) {
-//     const [exercise, setExercise] = useState([])
-
-//     useEffect(() => {
-//         api().get("/restricted/exercises")
-//             .then(result => {
-//                 setExercise(result.data.exercises)
-//             })
-//             .catch(error => {
-//                 console.log(error)
-//             })
-//     }, [])
-
-//     const handleDelete = (event, id) => {
-//         event.preventDefault()
-//         const workout = [exercise.find(workout => workout.id === id)]
-
-//        if ( window.confirm("Are you sure?!")) {
-//         setExercise(exercise.filter(workout => workout.id !== id))
-
-//         // props.deleteEvent(exercise)
-
-//         api().delete(`/restricted/exercises/${id}`)
-//             .then(result => {
-//                 console.log("workout was TERMINATED")
-                
-//             })
-//             .catch(error => {
-//                 console.log(error)
-//                 setExercise([ ...exercise, workout])
-//             })
-//        }
-//     }
-
-//     return (
-//         <>
-//             <h1>Workout</h1>
-
-//             {exercise.map(workout => (
-//                 <div key={workout.id}>
-//                     <Link to={'/restricted/exercises/'}>Add</Link>
-//                     {/* <Link  to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
-//                     <button onClick={(e) => handleDelete(e, workout.id)}>Delete</button>
-//                     <div>WORKOUT NAME: {workout.name}</div>
-//                     <div>REPS: {workout.reps}</div>
-//                     <div>SETS: {workout.sets}</div>
-//                     <div>weight: {workout.weight}</div>
-//                 </div>
-//             ))}
-
-//         </>
-//     )
-// }
-
-// const mapStateToProps = state => {
-//   return {
-//     //   workout: state.workout
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   { deleteEvent }
-// )(Exercise);
-=======
-=======
->>>>>>> cff30e5a39684b4a483740622f8b788ecbc75499
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import {addTask} from "../actions/actions";
 
 const ExerciseForm = styled(Form)`
   display: flex;
@@ -141,7 +66,7 @@ const NewExercise = ({ errors, touched, status }) => {
         <span>Exercise</span>
         <Fields
           type="text"
-          name="exercise"
+          name="name"
           placeholder="Bench Press, Squats, Etc."
         />
       </label>
@@ -171,17 +96,17 @@ const NewExercise = ({ errors, touched, status }) => {
   );
 };
 
-export default withFormik({
+const ExForm = withFormik ({
   mapPropsToValues: values => {
     return {
-      exercise: values.species || "",
+      name: values.name || "",
       reps: values.reps || "",
       sets: values.sets || "",
       weight: values.weight || ""
     };
   },
   validationSchema: yup.object().shape({
-    exercise: yup.string().required("Exercise name needed."),
+    name: yup.string().required("Exercise name needed."),
     reps: yup
       .number()
       .positive("Do at least 1!")
@@ -195,20 +120,28 @@ export default withFormik({
       .positive("You can't lift negative lbs :)")
       .required("How much weight?")
   }),
-  handleSubmit: (values, { setValues }) => {
+  handleSubmit: (values, { setSubmitting, props, resetForm }) => {
     console.log(values);
-    axios
-      .post("#", values)
-      .then(response => {
-        setValues(response.data);
-      })
-      .catch(error => {
-        console.log("Error: ", error);
-      });
+    props.addTask(values)
+    setSubmitting(false)
+    resetForm()
+   
+    // axios
+    //   .post("#", values)
+    //   .then(response => {
+    //     setValues(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.log("Error: ", error);
+    //   });
   }
 })(NewExercise);
-<<<<<<< HEAD
->>>>>>> master
-=======
 
->>>>>>> cff30e5a39684b4a483740622f8b788ecbc75499
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  { addTask }
+)(ExForm);
