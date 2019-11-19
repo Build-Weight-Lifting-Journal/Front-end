@@ -1,3 +1,43 @@
+// <<<<<<< HEAD
+import React, {useEffect, useState } from "react"
+
+import styled from "styled-components";
+import axios from "axios";
+
+const CardContainer = styled.div`
+background-color: #717E8E;
+color: #fafcff;
+display: flex;
+width: 20%;
+height: 200px;
+justify-content: space-around;
+flex-direction: column;
+box-shadow:0 4px 8px 0 rgba(0, 0, 0, 1);
+`
+
+const Divider = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-between;
+`
+
+
+// =======
+
+
+// const ExerciseCard = ({ exercise }) => {
+//     return (
+//         <div className="exerciseCard">
+//             <h2>Name: {exercise.name}</h2>
+//             <p>Sets: {exercise.sets}</p>
+//             <p>Reps: {exercise.reps}</p>
+//             <p>Weights: {exercise.weight}</p>
+//         </div>
+//     )
+// }
+
+// export default ExerciseCard;
+// >>>>>>> 1f6adbd680f1b246dc5a0143eea6309d0a42e719
 // import React, { useState, useEffect } from "react";
 // import { connect } from "react-redux";
 // import { api } from "../utils/api";
