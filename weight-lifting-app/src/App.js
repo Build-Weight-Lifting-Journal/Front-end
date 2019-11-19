@@ -17,7 +17,7 @@ function App() {
   // }
 
   return (
-    <Router>
+    <div>
       <div className="App">
         <ul>
           <li>
@@ -55,7 +55,7 @@ function App() {
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
       <Route path="/user/:username" exact component={User} />
-    </Router>
+    </div>
   );
 }
 
