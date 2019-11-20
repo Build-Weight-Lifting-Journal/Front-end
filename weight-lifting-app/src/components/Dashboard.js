@@ -11,9 +11,9 @@ function Dashboard(){
         <div>
 <h1>Hello</h1>
 
- {/* <AddExercise /> */}
-{/* <PrivateRoute exact path="/dashboard" component={User} />
-<PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> */}
+ <AddExercise />
+ <PrivateRoute exact path="/dashboard" component={User} /> 
+<PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> 
         </div>
     )
 }
