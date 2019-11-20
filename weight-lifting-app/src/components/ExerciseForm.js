@@ -122,18 +122,19 @@ const ExForm = withFormik ({
   }),
   handleSubmit: (values, { setSubmitting, props, resetForm }) => {
     console.log(values);
+    //using redux
     props.addTask(values)
     setSubmitting(false)
     resetForm()
-   
-    // axios
-    //   .post("#", values)
-    //   .then(response => {
-    //     setValues(response.data);
-    //   })
-    //   .catch(error => {
-    //     console.log("Error: ", error);
-    //   });
+    //prior axios post call
+      // axios
+      //   .post("#", values)
+      //   .then(response => {
+      //     setValues(response.data);
+      //   })
+      //   .catch(error => {
+      //     console.log("Error: ", error);
+      //   });
   }
 })(NewExercise);
 
@@ -144,8 +145,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { addTask }
-<<<<<<< HEAD
 )(ExForm);
-=======
-)(ExForm);
->>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28

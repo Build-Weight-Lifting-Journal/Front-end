@@ -1,4 +1,5 @@
 import { api } from "../utils/api";
+import { history } from "../index";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -38,6 +39,7 @@ export const loginData = payload => dispatch => {
       console.log(res.data);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       window.localStorage.setItem("token", res.data.token);
+      history.push("/dashboard");
     })
     .catch(err => {
       console.log(err, "login failed");
@@ -63,6 +65,7 @@ export const register = payload => dispatch => {
       console.log(res.data);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
       window.localStorage.setItem("token", res.data.token);
+      history.push("/dashboard");
     })
     .catch(err => {
       console.log(err, "Wouldn't it be nice if I worked?");
@@ -74,7 +77,7 @@ export const NEW_TASK_START = "NEW_TASK_START";
 export const NEW_TASK_SUCCESS = "NEW_TASK_SUCCESS";
 export const NEW_TASK_ERROR = "NEW_TASK_ERROR";
 
-export const addTask = (formValues, history, push) => dispatch => {
+export const addTask = formValues => dispatch => {
   const makeTask = {
     name: formValues.name,
     sets: formValues.sets,
@@ -85,11 +88,7 @@ export const addTask = (formValues, history, push) => dispatch => {
   api()
     .post("/restricted/exercises", makeTask)
     .then(response => {
-<<<<<<< HEAD
-      history.push("/dashboard")
-=======
-      // history("/dashboard")
->>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28
+      history.push("/dashboard");
       console.log(response);
       dispatch({ type: NEW_TASK_SUCCESS });
 
@@ -111,11 +110,7 @@ export const editEvent = (updateEvent, id, history) => dispatch => {
     .then(response => {
       console.log(response);
       dispatch({ type: EDIT_SUCCESS });
-<<<<<<< HEAD
-      history.push("/dashboard");
-=======
       // history.push("/dashboard");
->>>>>>> 78d50a0475a8e40af973e785c1ed57ddba10cc28
     })
     .catch(error => {
       console.log(error);
@@ -130,11 +125,25 @@ export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const deleteEvent = (id, history) => dispatch => {
   dispatch({ type: DELETE_START });
   api()
-    .delete(`/restricted/exercises/:${id}`)
+    .delete(`/restricted/exercises/${id}`)
     .then(response => {
       console.log(response);
       dispatch({ type: DELETE_SUCCESS });
-      history.push("/dashboard");
+      // history.push("/dashboard");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const deleteJounarl = (id) => dispatch => {
+  dispatch({ type: DELETE_START });
+  api()
+    .delete(`/restricted/journals/${id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: DELETE_SUCCESS });
+      // history.push("/dashboard");
     })
     .catch(error => {
       console.log(error);
@@ -142,7 +151,6 @@ export const deleteEvent = (id, history) => dispatch => {
 };
 
 // * GET EVENT BY EVENT ID ACTION CREATOR
-// if the data comes back as eventName Halloween Party - $250 budget = seed data is working
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";

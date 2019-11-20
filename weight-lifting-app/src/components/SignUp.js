@@ -1,6 +1,27 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../actions/actions";
+import styled from "styled-components";
+
+const SignupDiv = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 20px auto;
+`;
+
+const Inputs = styled.input`
+  margin: 16px 0 16px 0;
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+`;
 
 function Signup(props) {
   const intialState = {
@@ -34,10 +55,10 @@ function Signup(props) {
   };
 
   return (
-    <div>
+    <SignupDiv>
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
-        <input
+        <Inputs
           name="username"
           type="text"
           placeholder="username"
@@ -45,7 +66,7 @@ function Signup(props) {
           onChange={handleChange}
           required
         />
-        <input
+        <Inputs
           name="password"
           type="password"
           placeholder="password"
@@ -55,7 +76,7 @@ function Signup(props) {
           onChange={handleChange}
           required
         />
-        <input
+        <Inputs
           name="firstName"
           type="text"
           placeholder="First Name"
@@ -63,7 +84,7 @@ function Signup(props) {
           onChange={handleChange}
           required
         />
-        <input
+        <Inputs
           name="lastName"
           type="text"
           placeholder="Last Name"
@@ -71,7 +92,7 @@ function Signup(props) {
           onChange={handleChange}
           required
         />
-        <input
+        <Inputs
           name="email"
           type="email"
           placeholder="email"
@@ -82,7 +103,7 @@ function Signup(props) {
 
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </SignupDiv>
   );
 }
 
