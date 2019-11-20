@@ -43,15 +43,16 @@ function ExerciseCard(props) {
   const [exercise, setExercise] = useState([]);
 
   useEffect(() => {
+    const id = props.match.params.id;
     api()
-      .get("/restricted/exercises")
+      .get('restricted/exercises/')
       .then(result => {
         setExercise(result.data.exercises);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [props.match.params.id]);
 
   const handleDelete = (event, id) => {
     event.preventDefault();
@@ -61,7 +62,7 @@ function ExerciseCard(props) {
       setExercise(exercise.filter(workout => workout.id !== id));
 
       props.deleteEvent(id)
-    
+
       // api()
       //   .delete(`/restricted/exercises/${id}`)
       //   .then(result => {
@@ -77,10 +78,10 @@ function ExerciseCard(props) {
   return (
     <>
       <h1>Exercises</h1>
-
+      <Link to={"/add-exercise"}>Add</Link>
       {exercise.map(workout => (
         <div key={workout.id}>
-           <Link to={"/add-exercise"}>Add</Link>
+          {/* <Link to={"/add-exercise"}>Add</Link> */}
           {/* <Link  to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
           <button onClick={e => handleDelete(e, workout.id)}>Delete</button>
           <div>WORKOUT NAME: {workout.name}</div>
@@ -95,7 +96,7 @@ function ExerciseCard(props) {
 
 const mapStateToProps = state => {
   return {
-      workout: state.workout
+    workout: state.workout
   };
 };
 

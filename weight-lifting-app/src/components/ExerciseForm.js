@@ -126,15 +126,15 @@ const ExForm = withFormik ({
     props.addTask(values)
     setSubmitting(false)
     resetForm()
-    //prior axios post call
-      // axios
-      //   .post("#", values)
-      //   .then(response => {
-      //     setValues(response.data);
-      //   })
-      //   .catch(error => {
-      //     console.log("Error: ", error);
-      //   });
+    //prior axios post
+    // axios
+    //   .post("#", values)
+    //   .then(response => {
+    //     setValues(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.log("Error: ", error);
+    //   });
   }
 })(NewExercise);
 

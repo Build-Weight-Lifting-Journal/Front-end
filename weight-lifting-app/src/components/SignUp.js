@@ -42,9 +42,9 @@ function Signup(props) {
   const handleSubmit = event => {
     // event.preventDefault();
     props.register(payload);
-    reset();
+    // reset();
     // .then(() => {
-    //   props.history.push("/a");
+      props.history.push("/dashboard");
     // });
 
     console.log(handleSubmit);

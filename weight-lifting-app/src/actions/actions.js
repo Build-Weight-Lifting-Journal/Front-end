@@ -88,7 +88,7 @@ export const addTask = formValues => dispatch => {
   api()
     .post("/restricted/exercises", makeTask)
     .then(response => {
-      history.push("/dashboard");
+      history.push("/exercises");
       console.log(response);
       dispatch({ type: NEW_TASK_SUCCESS });
 
