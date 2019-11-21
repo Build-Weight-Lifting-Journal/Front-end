@@ -4,17 +4,28 @@ import { api } from "../utils/api";
 import { deleteEvent } from "../actions/actions";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import EditExercise from "./EditCard"
 
 const CardContainer = styled.div`
-background-color: #717E8E;
+background: linear-gradient(to bottom, #ce4f00 5%, #322f20 100%);
+  background-color: #ce4f00;
 color: #fafcff;
 display: flex;
-width: 20%;
+width: 42%;
 height: 200px;
 justify-content: space-around;
 flex-direction: column;
+align-items: center;
+margin: 15px
 box-shadow:0 4px 8px 0 rgba(0, 0, 0, 1);
+@media (min-width: 600px) {
+  width: 30%
+  margin: 10px;
+}
+@media (min-width: 850px) {
+  width: 30%;
+  
+}
 `
 
 const Divider = styled.div`
@@ -22,22 +33,22 @@ display: flex;
 width: 100%;
 justify-content: space-between;
 `
+const Title = styled.div`
+font-size: 1.5rem;
+@media (min-width: 600px) {
+  font-size: 1.6rem;
+}
+@media (min-width: 850px) {
+  font-size: 2rem;
+}
+`
 
-
-// const ExerciseCard = ({ exercise }) => {
-//     return (
-//         <div className="exerciseCard">
-//             <h2>Name: {exercise.name}</h2>
-//             <p>Sets: {exercise.sets}</p>
-//             <p>Reps: {exercise.reps}</p>
-//             <p>Weights: {exercise.weight}</p>
-//         </div>
-//     )
-// }
-
-// export default ExerciseCard;
-
-
+const CardList = styled.div`
+display: flex;
+width: 100%;
+flex-wrap: wrap;
+justify-content: center;
+` 
 
 function ExerciseCard(props) {
   const [exercise, setExercise] = useState([]);
@@ -61,42 +72,57 @@ function ExerciseCard(props) {
     if (window.confirm("Are you sure?!")) {
       setExercise(exercise.filter(workout => workout.id !== id));
 
-      props.deleteEvent(id)
+      // props.deleteEvent(exercise)
 
-      // api()
-      //   .delete(`/restricted/exercises/${id}`)
-      //   .then(result => {
-      //     console.log("workout was TERMINATED");
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //     setExercise([...exercise, workout]);
-      //   });
+      api()
+        .delete(`/restricted/exercises/${id}`)
+        .then(result => {
+          console.log("workout was TERMINATED");
+        })
+        .catch(error => {
+          console.log(error);
+          setExercise([...exercise, workout]);
+        });
     }
   };
 
   return (
     <>
-      <h1>Exercises</h1>
-      <Link to={"/add-exercise"}>Add</Link>
+      <h1>Workout</h1>
+<CardList>
       {exercise.map(workout => (
-        <div key={workout.id}>
-          {/* <Link to={"/add-exercise"}>Add</Link> */}
-          {/* <Link  to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
-          <button onClick={e => handleDelete(e, workout.id)}>Delete</button>
-          <div>WORKOUT NAME: {workout.name}</div>
+      
+        <CardContainer key={workout.id}>
+          {/* <Link to={"/restricted/exercises/"}>Add</Link> */}
+          <Title>{workout.name}</Title>
           <div>REPS: {workout.reps}</div>
           <div>SETS: {workout.sets}</div>
-          <div>weight: {workout.weight}</div>
-        </div>
+          <div>WEIGHT: {workout.weight}</div>
+          <Divider>
+          <button className="material-icons" Style="background: none;
+	          color: inherit;
+	          border: none;
+	          padding: 0;
+	          cursor: pointer;
+	          outline: inherit;" onClick={e => handleDelete(e, workout.id)}>delete</button>
+           <Link className="material-icons" to={`/exercise/edit/${EditExercise}`} Style="background: none;
+	         color: inherit;
+	         border: none;
+        	 padding: 0;
+	         cursor: pointer;
+	         outline: inherit;" >edit</Link>
+          </Divider>
+        </CardContainer>
+      
       ))}
+      </CardList>
     </>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    workout: state.workout
+    //   workout: state.workout
   };
 };
 
