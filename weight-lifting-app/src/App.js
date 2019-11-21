@@ -2,7 +2,7 @@ import React from "react"; // , {useState}
 import "./App.css";
 
 import { Route, NavLink, withRouter } from "react-router-dom";
-
+import PrivateRoute from "./components/PrivateRoute";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
