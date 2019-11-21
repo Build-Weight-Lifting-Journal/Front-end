@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateJournal = props => {
   const [newJournal, setNewJournal] = useState({
-    date: "",
+    date: new Date(),
     region: ""
   });
+
+  const handleChange = e => {
+    setNewJournal({ ...newJournal, [e.target.name]: [e.target.date] });
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,24 +20,33 @@ const CreateJournal = props => {
   axios.post("restricted/journals/", props);
 
   return (
-    <div className="field">
-      <div className="control">
-        <div className=""></div>
+    <>
+      <div className="field">
+        <div className="control">
+          <DatePicker
+            todayButton="Today"
+            selected={newJournal.date}
+            onChange={}
+          ></DatePicker>
+        </div>
       </div>
-    </div>
 
-
-
-    <div className="field">
-      <div class="control">
-        <span class="select">
-          <select>
-            <option>Upper</option>
-            <option>Lower</option>
-            <option>Cardio/Core</option>
-          </select>
-        </span>
+      <div className="field">
+        <div class="control">
+          <span class="select">
+            <select>
+              <option>Upper</option>
+              <option>Lower</option>
+              <option>Cardio/Core</option>
+            </select>
+          </span>
+        </div>
       </div>
-    </div>
+      <div className="buttons">
+        <a className="button is-primary">Submit</a>
+      </div>
+    </>
   );
 };
+
+export default CreateJournal;

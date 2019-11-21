@@ -1,5 +1,6 @@
 import React from "react"; // , {useState}
 import "./App.css";
+import "./App.scss";
 
 import { Route, NavLink, withRouter } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
@@ -15,6 +16,7 @@ import Logout from "./components/Logout";
 // import PrivateRoute from "./components/PrivateRoute";
 import NewExercise from "./components/ExerciseForm";
 import ExerciseCard from "./components/ExerciseCard";
+import CreateJournal from "./components/CreateJournal";
 
 const User = ({ match }) => {
   return <h1>Welcome User {match.params.username}</h1>;
@@ -30,31 +32,42 @@ function App() {
 
   return (
     <div>
+      <CreateJournal />
       <div className="App">
         <ul>
           <li>
-            { !signedIn && (<NavLink to="/" exact activeStyle={{ color: "green" }}>
-              Home
-            </NavLink>) }
+            {!signedIn && (
+              <NavLink to="/" exact activeStyle={{ color: "green" }}>
+                Home
+              </NavLink>
+            )}
           </li>
           <li>
-           { !signedIn && (<NavLink to="/signup" exact activeStyle={{ color: "green" }}>
-              Sign up
-            </NavLink> )}
+            {!signedIn && (
+              <NavLink to="/signup" exact activeStyle={{ color: "green" }}>
+                Sign up
+              </NavLink>
+            )}
           </li>
           <li>
-           { !signedIn && (<NavLink to="/login" exact activeStyle={{ color: "green" }}>
-              Login
-            </NavLink> )}
+            {!signedIn && (
+              <NavLink to="/login" exact activeStyle={{ color: "green" }}>
+                Login
+              </NavLink>
+            )}
           </li>
-            { signedIn && (<NavLink to="/dashboard" exact activeStyle={{ color: "green" }}>
+          {signedIn && (
+            <NavLink to="/dashboard" exact activeStyle={{ color: "green" }}>
               Dashboard
-            </NavLink>) }
-        
-       { signedIn && (<NavLink to="/logout" exact activeStyle={{ color: "green" }}>
+            </NavLink>
+          )}
+
+          {signedIn && (
+            <NavLink to="/logout" exact activeStyle={{ color: "green" }}>
               Logout
-            </NavLink>) }
-</ul>
+            </NavLink>
+          )}
+        </ul>
         <hr />
 
         {/* <input type="button" value="log in" onClick={}/> */}
@@ -67,7 +80,7 @@ function App() {
         />
         {/* <NewExercise />
         <JournalCard /> */}
-       {/* <ExerciseCard /> */}
+        {/* <ExerciseCard /> */}
       </div>
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/add-exercise" component={NewExercise} />
@@ -80,8 +93,7 @@ function App() {
       <Route path="/user/:username" exact component={User} />
 
       {/* <PrivateRoute exact path="/dashboard" component={Exercise} /> */}
-{/* <PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> */}
-
+      {/* <PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> */}
     </div>
   );
 }
