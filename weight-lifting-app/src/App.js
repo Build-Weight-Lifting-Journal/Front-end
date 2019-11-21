@@ -1,6 +1,8 @@
 import React from "react"; // , {useState}
 import "./App.css";
+
 import { Route, NavLink, withRouter } from "react-router-dom";
+
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -10,7 +12,7 @@ import { getToken } from "./utils/api";
 import JournalCard from "./components/JournalCard";
 import Logout from "./components/Logout";
 
-import PrivateRoute from "./components/PrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute";
 import NewExercise from "./components/ExerciseForm";
 import ExerciseCard from "./components/ExerciseCard";
 
@@ -72,9 +74,11 @@ function App() {
       <PrivateRoute exact path="/exercises" component={ExerciseCard} />
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
+
       <PrivateRoute exact path="/logout" component={Logout} />
 
-      {/* <Route path="/user/:username" exact component={User} /> */}
+      <Route path="/user/:username" exact component={User} />
+
       {/* <PrivateRoute exact path="/dashboard" component={Exercise} /> */}
 {/* <PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> */}
 

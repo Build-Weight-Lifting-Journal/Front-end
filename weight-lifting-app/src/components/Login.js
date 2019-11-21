@@ -70,14 +70,6 @@ function Login(props) {
   )
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     loginLoading: state.login.loginLoading,
-//     loggedIn: state.login.loggedIn,
-//     userId: state.login.userId
-//   };
-// };
-
 const mapStateToProps = state => {
   return { login_user: state.user};
 };

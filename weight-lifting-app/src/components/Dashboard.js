@@ -14,6 +14,10 @@ function Dashboard(){
 <PrivateRoute exact path="/dashboard" component={JournalCard} />
 {/* <PrivateRoute exact path="/dashboard" component={User} /> */}
 
+//  <AddExercise />
+//  <PrivateRoute exact path="/dashboard" component={User} /> 
+// <PrivateRoute exact path="/restricted/exercises" component={AddExercise} /> 
+
         </div>
     )
 }

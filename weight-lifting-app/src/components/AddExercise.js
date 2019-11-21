@@ -72,7 +72,8 @@
 // import { withRouter } from "react-router-dom";
 // import { connect } from "react-redux";
 
-// import { addTask } from "../actions/actions";
+
+import { addTask } from "../actions/actions";
 // import { api } from "../utils/api";
 
 // const AddTaskForm = props => {
