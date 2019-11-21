@@ -10,7 +10,7 @@ const CreateJournal = props => {
   });
 
   const handleChange = e => {
-    setNewJournal({ ...newJournal, [e.target.name]: [e.target.date] });
+    setNewJournal({ ...newJournal, [e.target.date]: [e.target.value] });
   };
 
   const handleSubmit = e => {
@@ -26,7 +26,7 @@ const CreateJournal = props => {
           <DatePicker
             todayButton="Today"
             selected={newJournal.date}
-            onChange={}
+            onChange={e => handleChange(e)}
           ></DatePicker>
         </div>
       </div>
@@ -43,7 +43,9 @@ const CreateJournal = props => {
         </div>
       </div>
       <div className="buttons">
-        <a className="button is-primary">Submit</a>
+        <a className="button is-primary" onSubmit={handleSubmit}>
+          Submit
+        </a>
       </div>
     </>
   );

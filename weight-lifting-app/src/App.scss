@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+$blood-orange: #ce4f00;
+
+$primary: $blood-orange;
+
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
