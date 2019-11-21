@@ -122,10 +122,11 @@ const ExForm = withFormik ({
   }),
   handleSubmit: (values, { setSubmitting, props, resetForm }) => {
     console.log(values);
+    //using redux
     props.addTask(values)
     setSubmitting(false)
     resetForm()
-   
+    //prior axios post
     // axios
     //   .post("#", values)
     //   .then(response => {

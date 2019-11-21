@@ -1,8 +1,10 @@
-// <<<<<<< HEAD
-import React, {useEffect, useState } from "react"
-
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { api } from "../utils/api";
+import { deleteEvent } from "../actions/actions";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import axios from "axios";
+
 
 const CardContainer = styled.div`
 background-color: #717E8E;
@@ -22,9 +24,6 @@ justify-content: space-between;
 `
 
 
-// =======
-
-
 // const ExerciseCard = ({ exercise }) => {
 //     return (
 //         <div className="exerciseCard">
@@ -37,74 +36,71 @@ justify-content: space-between;
 // }
 
 // export default ExerciseCard;
-// >>>>>>> 1f6adbd680f1b246dc5a0143eea6309d0a42e719
-// import React, { useState, useEffect } from "react";
-// import { connect } from "react-redux";
-// import { api } from "../utils/api";
-// import { deleteEvent } from "../actions/actions";
-// import { Link } from "react-router-dom";
 
-// function ExerciseCard(props) {
-//   const [exercise, setExercise] = useState([]);
 
-//   useEffect(() => {
-//     api()
-//       .get("/restricted/exercises")
-//       .then(result => {
-//         setExercise(result.data.exercises);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-//   }, []);
 
-//   const handleDelete = (event, id) => {
-//     event.preventDefault();
-//     const workout = [exercise.find(workout => workout.id === id)];
+function ExerciseCard(props) {
+  const [exercise, setExercise] = useState([]);
 
-//     if (window.confirm("Are you sure?!")) {
-//       setExercise(exercise.filter(workout => workout.id !== id));
+  useEffect(() => {
+    const id = props.match.params.id;
+    api()
+      .get('restricted/exercises/')
+      .then(result => {
+        setExercise(result.data.exercises);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [props.match.params.id]);
 
-//       // props.deleteEvent(exercise)
+  const handleDelete = (event, id) => {
+    event.preventDefault();
+    const workout = [exercise.find(workout => workout.id === id)];
 
-//       api()
-//         .delete(`/restricted/exercises/${id}`)
-//         .then(result => {
-//           console.log("workout was TERMINATED");
-//         })
-//         .catch(error => {
-//           console.log(error);
-//           setExercise([...exercise, workout]);
-//         });
-//     }
-//   };
+    if (window.confirm("Are you sure?!")) {
+      setExercise(exercise.filter(workout => workout.id !== id));
 
-//   return (
-//     <>
-//       <h1>Workout</h1>
+      props.deleteEvent(id)
 
-//       {exercise.map(workout => (
-//         <div key={workout.id}>
-//           <Link to={"/restricted/exercises/"}>Add</Link>
-//           {/* <Link  to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
-//           <button onClick={e => handleDelete(e, workout.id)}>Delete</button>
-//           <div>WORKOUT NAME: {workout.name}</div>
-//           <div>REPS: {workout.reps}</div>
-//           <div>SETS: {workout.sets}</div>
-//           <div>weight: {workout.weight}</div>
-//         </div>
-//       ))}
-//     </>
-//   );
-// }
+      // api()
+      //   .delete(`/restricted/exercises/${id}`)
+      //   .then(result => {
+      //     console.log("workout was TERMINATED");
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //     setExercise([...exercise, workout]);
+      //   });
+    }
+  };
 
-// const mapStateToProps = state => {
-//   return {
-//     //   workout: state.workout
-//   };
-// };
+  return (
+    <>
+      <h1>Exercises</h1>
+      <Link to={"/add-exercise"}>Add</Link>
+      {exercise.map(workout => (
+        <div key={workout.id}>
+          {/* <Link to={"/add-exercise"}>Add</Link> */}
+          {/* <Link  to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
+          <button onClick={e => handleDelete(e, workout.id)}>Delete</button>
+          <div>WORKOUT NAME: {workout.name}</div>
+          <div>REPS: {workout.reps}</div>
+          <div>SETS: {workout.sets}</div>
+          <div>weight: {workout.weight}</div>
+        </div>
+      ))}
+    </>
+  );
+}
 
-// export default connect(
-//   mapStateToProps,
-//   { deleteEvent }
-// )(ExerciseCard);
+const mapStateToProps = state => {
+  return {
+    workout: state.workout
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { deleteEvent }
+)(ExerciseCard);
