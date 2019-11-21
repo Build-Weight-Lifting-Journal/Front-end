@@ -13,25 +13,25 @@ function UpdateExercise(props, id) {
         weight: ""
     });
 
-    useEffect(() => {
-        api()
-            .get(`/restricted/exercises/${id}`)
-            .then(result => {
-                result.data.map(work => {
-                    setWorkout({
-                        ...workout,
-                        name: work.name,
-                        reps: work.reps,
-                        sets: work.sets,
-                        weight: work.weight
-                    })
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            });
+    // useEffect(() => {
+    //     api()
+    //         .get(`/restricted/exercises/${id}`)
+    //         .then(result => {
+    //             result.data.map(work => {
+    //                 setWorkout({
+    //                     ...workout,
+    //                     name: work.name,
+    //                     reps: work.reps,
+    //                     sets: work.sets,
+    //                     weight: work.weight
+    //                 })
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.log(error, "error");
+    //         });
 
-    }, [props.match.params.id]);
+    // }, [props.match.params.id]);
 
     const handleChange = event => {
         setWorkout({
@@ -42,6 +42,7 @@ function UpdateExercise(props, id) {
 
     const handleSubmit = (event, id) => {
         event.preventDefault();
+        
 
         api()
             .put(`/restricted/exercises/${props.match.params.id}`, workout)
