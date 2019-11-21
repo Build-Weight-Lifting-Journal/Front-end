@@ -52,7 +52,7 @@ function ExerciseCard(props) {
       .catch(error => {
         console.log(error);
       });
-  }, [props.match.params.id]);
+  }, []);
 
   const handleDelete = (event, id) => {
     event.preventDefault();
@@ -82,7 +82,7 @@ function ExerciseCard(props) {
       {exercise.map(workout => (
         <div key={workout.id}>
           {/* <Link to={"/add-exercise"}>Add</Link> */}
-          {/* <Link  to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
+          <Link to={`/restricted/exercises/${workout.id}`}>Edit</Link>
           <button onClick={e => handleDelete(e, workout.id)}>Delete</button>
           <div>WORKOUT NAME: {workout.name}</div>
           <div>REPS: {workout.reps}</div>
