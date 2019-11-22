@@ -1,5 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../utils/api";
+import styled from "styled-components";
+
+const EditDiv = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 20px auto;
+`;
+
+const Inputs = styled.input`
+  margin: 16px 0 16px 0;
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+`;
 
 
 function UpdateExercise(props, id) {
@@ -57,30 +78,30 @@ function UpdateExercise(props, id) {
     return (
         <>
             <h1>Update User</h1>
-
+        <EditDiv>
             <form onSubmit={handleSubmit}>
-                <input
+                <Inputs
                     type="text"
                     name="name"
                     placeholder="Name"
                     value={workout.name}
                     onChange={handleChange}
                 />
-                <input
+                <Inputs
                     type="text"
                     name="reps"
                     placeholder="Reps"
                     value={workout.reps}
                     onChange={handleChange}
                 />
-                <input
+                <Inputs
                     type="number"
                     name="sets"
                     placeholder="Sets"
                     value={workout.sets}
                     onChange={handleChange}
                 />
-                <input
+                <Inputs
                     type="number"
                     name="weight"
                     placeholder="Weight"
@@ -90,6 +111,7 @@ function UpdateExercise(props, id) {
 
                 <button type="submit">Save</button>
             </form>
+    </EditDiv>
         </>
     );
 }
