@@ -5,6 +5,7 @@ import "./App.css";
 
 import Dashboard from "./components/Dashboard";
 import ExerciseCard from "./components/ExerciseCard";
+import Home from "./components/Home";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import NewExercise from "./components/ExerciseForm";
@@ -34,7 +35,7 @@ function App() {
               Home
             </NavLink>)}
           </li>
-          <li>
+          {/* <li>
             {!signedIn && (<NavLink to="/signup" exact activeStyle={{ color: "green" }}>
               Sign up
             </NavLink>)}
@@ -43,7 +44,7 @@ function App() {
             {!signedIn && (<NavLink to="/login" exact activeStyle={{ color: "green" }}>
               Login
             </NavLink>)}
-          </li>
+          </li> */}
           {signedIn && (<NavLink to="/dashboard" exact activeStyle={{ color: "green" }}>
             Dashboard
             </NavLink>)}
@@ -64,7 +65,7 @@ function App() {
         />
 
       </div>
-      
+      <Route exact path="/" component={Home} />
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
       <Route exact path="/restricted/exercises/:id" component={UpdateExercise} />

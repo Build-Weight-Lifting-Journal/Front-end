@@ -57,6 +57,7 @@ function JournalCard(props) {
           {/* These link to the privateroutes in the app.js */}
           <Link to={"/exercises"}>Exercises</Link>
           <Link to={"/add-journal"}>Add</Link>
+          
         </div>
       ))}
     </>
