@@ -19,8 +19,7 @@ const ButtonDiv = styled.div`
   background-repeat: no-repeat;
   max-height: 100vh;
   border-radius: 10px;
-  
-`;
+  `;
 
 const ImageDiv = styled.div``;
 
@@ -60,8 +59,7 @@ function Home() {
                 </NavLinks>
               </Buttons>
             )}
-            {/* </InnerDiv>
-          <InnerDiv> */}
+           
             {!signedIn && (
               <Buttons>
                 <NavLinks to="/login" exact activeStyle={{ color: "green" }}>
