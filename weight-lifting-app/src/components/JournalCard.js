@@ -28,18 +28,18 @@ function JournalCard(props) {
 
     if (window.confirm("Are you sure?!")) {
       setJournals(journal.filter(workout => workout.id !== id));
-            //this is the api via redux
+      //this is the api via redux
       props.deleteJounarl(id)
 
-    //   api()
-    //     .delete(`/restricted/journals/${id}`)
-    //     .then(result => {
-    //       console.log("workout was TERMINATED");
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //       setJournals([...journal, workout]);
-    //     });
+      //   api()
+      //     .delete(`/restricted/journals/${id}`)
+      //     .then(result => {
+      //       console.log("workout was TERMINATED");
+      //     })
+      //     .catch(error => {
+      //       console.log(error);
+      //       setJournals([...journal, workout]);
+      //     });
     }
   };
 
@@ -57,6 +57,7 @@ function JournalCard(props) {
           {/* These link to the privateroutes in the app.js */}
           <Link to={"/exercises"}>Exercises</Link>
           <Link to={"/add-journal"}>Add</Link>
+          
         </div>
       ))}
     </>
@@ -65,7 +66,7 @@ function JournalCard(props) {
 
 const mapStateToProps = state => {
   return {
-      workout: state.workout
+    workout: state.workout
   };
 };
 

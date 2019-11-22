@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import {addTask} from "../actions/actions";
+import { addTask } from "../actions/actions";
 
 const ExerciseForm = styled(Form)`
   display: flex;
@@ -96,7 +96,7 @@ const NewExercise = ({ errors, touched, status }) => {
   );
 };
 
-const ExForm = withFormik ({
+const ExForm = withFormik({
   mapPropsToValues: values => {
     return {
       name: values.name || "",
