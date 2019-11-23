@@ -9,10 +9,9 @@ const CreateJournal = props => {
     region: ""
   });
 
-  const handleChange = e => {
-    setNewJournal({ ...newJournal, [e.target.date]: [e.target.value] });
+  const handleChange = date => {
+    setNewJournal({ ...newJournal, date: date });
   };
-
   const handleSubmit = e => {
     e.preventDefault();
   };
@@ -26,7 +25,7 @@ const CreateJournal = props => {
           <DatePicker
             todayButton="Today"
             selected={newJournal.date}
-            onChange={e => handleChange(e)}
+            onChange={handleChange}
           ></DatePicker>
         </div>
       </div>
