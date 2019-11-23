@@ -89,6 +89,7 @@ function ExerciseCard(props) {
   return (
     <>
       <h1>Workout</h1>
+      <Link to={'/add-exercise'}>Add</Link>
 <CardList>
       {exercise.map(workout => (
       
