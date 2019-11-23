@@ -4,7 +4,7 @@ import { api } from "../utils/api";
 import { deleteEvent } from "../actions/actions";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import EditExercise from "./EditCard"
+
 
 const CardContainer = styled.div`
 background: linear-gradient(to bottom, #ce4f00 5%, #322f20 100%);
@@ -105,12 +105,12 @@ function ExerciseCard(props) {
 	          padding: 0;
 	          cursor: pointer;
 	          outline: inherit;" onClick={e => handleDelete(e, workout.id)}>delete</button>
-           <Link className="material-icons" to={`/exercise/edit/${EditExercise}`} Style="background: none;
+           <button className="material-icons" Style="background: none;
 	         color: inherit;
 	         border: none;
         	 padding: 0;
 	         cursor: pointer;
-	         outline: inherit;" >edit</Link>
+	         outline: inherit;" >edit</button>
           </Divider>
         </CardContainer>
       

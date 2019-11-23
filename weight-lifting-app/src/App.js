@@ -7,7 +7,7 @@ import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Exercise from "./components/ExerciseCard"
-import EditCard from "./components/EditCard"
+
 import { getToken } from "./utils/api";
 // import Exercise from "./components/ExerciseCard"
 // import AddExercise from "./components/AddExercise"
@@ -77,7 +77,7 @@ function App() {
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
       <Route path="/user/:username" exact component={User} />
-      <Route path="/exercise/edit/:id" component={EditCard} />
+     
       {/* <Route path="/user/:username" exact component={User} /> */}
       <PrivateRoute exact path="/dashboard" component={Exercise} />
 
