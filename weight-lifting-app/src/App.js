@@ -54,7 +54,7 @@ function App() {
           {signedIn && (<NavLink to="/dashboard" exact activeStyle={{ color: "green" }}>
             Dashboard
             </NavLink>)}
-
+          <br/>
           {signedIn && (<NavLink to="/logout" exact activeStyle={{ color: "green" }}>
             Logout
             </NavLink>)}
@@ -79,13 +79,6 @@ function App() {
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/add-exercise" component={NewExercise} />
       <PrivateRoute exact path="/exercises" component={ExerciseCard} />
-      <Route path="/signup" exact component={Signup} />
-      <Route path="/login" exact component={Login} />
-      <Route path="/user/:username" exact component={User} />
-     
-      {/* <Route path="/user/:username" exact component={User} /> */}
-      <PrivateRoute exact path="/dashboard" component={Exercise} />
-
       <PrivateRoute exact path="/logout" component={Logout} />
 
     </div>

@@ -22,6 +22,28 @@ const Inputs = styled.input`
   border-radius: 4px;
   border: 1px solid #ccc;
 `;
+const Button = styled.button`
+  box-shadow: 0px 10px 14px -7px #322f20;
+  background: linear-gradient(to bottom, #ce4f00 5%, #322f20 100%);
+  background-color: #ce4f00;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+   margin: 20px auto;
+  cursor: pointer;
+  color: #f5f5f5;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 13px 32px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #fae9dc;
+  transition: all 0.3s ease-in;
+  &:hover {
+    background: linear-gradient(to bottom, #322f20 5%, #ce4f00 100%);
+    background-color: #322f20;
+  }
+`
 
 function Signup(props) {
   const intialState = {
@@ -101,7 +123,7 @@ function Signup(props) {
           required
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </SignupDiv>
   );

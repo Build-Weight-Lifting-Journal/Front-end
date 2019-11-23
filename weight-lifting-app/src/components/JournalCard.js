@@ -6,6 +6,65 @@ import { connect } from "react-redux";
 import { api } from "../utils/api";
 import { Link } from "react-router-dom";
 import { deleteJounarl } from "../actions/actions";
+import styled from "styled-components";
+
+
+const CardContainer = styled.div`
+background: linear-gradient(to bottom, #ce4f00 5%, #322f20 100%);
+  background-color: #ce4f00;
+color: #fafcff;
+display: flex;
+width: 42%;
+height: 200px;
+justify-content: space-around;
+flex-direction: column;
+align-items: center;
+margin: 15px
+box-shadow:0 4px 8px 0 rgba(0, 0, 0, 1);
+@media (min-width: 600px) {
+  width: 30%
+  margin: 10px;
+}
+@media (min-width: 850px) {
+  width: 30%;
+  
+}
+`
+
+const Divider = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-between;
+`
+const Title = styled.div`
+font-size: 1.5rem;
+@media (min-width: 600px) {
+  font-size: 1.6rem;
+}
+@media (min-width: 850px) {
+  font-size: 2rem;
+}
+`
+
+const CardList = styled.div`
+display: flex;
+width: 100%;
+flex-wrap: wrap;
+justify-content: center;
+` 
+
+const Links = styled(Link)`
+margin: 40px;
+padding: 5px;
+border: 1px solid black;
+text-decoration: none;
+background-color: #ce4f00;
+;
+`
+
+const H1 = styled.h1`
+text-align: center
+`
 
 
 function JournalCard(props) {
@@ -45,21 +104,25 @@ function JournalCard(props) {
 
   return (
     <>
-      <h1>Journal</h1>
-
+      <H1>Journal</H1>
+     
+       <Links to={"/exercises"}>Exercises</Links>
+          <Links to={"/add-journal"}>Add</Links>
+<CardList>
       {journal.map(workout => (
-        <div key={workout.id}>
+        <CardContainer key={workout.id}>
           {/* <Link to={"/restricted/journals/"}>Add</Link> */}
           {/* <Link  to={`/restricted/journals/${workout.id}`}>Edit</Link> */}
           <button onClick={e => handleDelete(e, workout.id)}>Delete</button>
           <div>Date: {workout.date}</div>
           <div>Region: {workout.region}</div>
           {/* These link to the privateroutes in the app.js */}
-          <Link to={"/exercises"}>Exercises</Link>
-          <Link to={"/add-journal"}>Add</Link>
+          {/* <Link to={"/exercises"}>Exercises</Link>
+          <Link to={"/add-journal"}>Add</Link> */}
           
-        </div>
+        </CardContainer>
       ))}
+  </CardList>
     </>
   );
 }
