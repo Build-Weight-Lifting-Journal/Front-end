@@ -19,7 +19,19 @@ const ButtonDiv = styled.div`
   background-repeat: no-repeat;
   max-height: 100vh;
   border-radius: 10px;
+  box-shadow: 5px 5px 8px #000000;
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-1rem) scale(1.03);
+    box-shadow: 6px 6px 20px #000000;
+  }
+  /* @media (max-width: 768px) {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
+  } */
 `;
 
 const ImageDiv = styled.div``;
@@ -27,23 +39,35 @@ const ImageDiv = styled.div``;
 const InnerDiv = styled.div`
   /* border: 1px solid red; */
   margin: 20px;
-  
 `;
 
 const Buttons = styled.button`
   max-width: 100%;
   width: 200px;
-  height: 40px;
+  height: 50px;
   margin: 20px;
   border-radius: 10px;
-  opacity: .8;
-
+  opacity: 0.8;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+  }
+  box-shadow: 5px 5px 8px #000000;
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-1rem) scale(1.03);
+    box-shadow: 6px 6px 20px #000000;
+  }
 `;
 
 const NavLinks = styled(NavLink)`
   text-decoration: none;
   font-size: 20px;
-  color: red;
+  color: blue;
 `;
 
 function Home() {
@@ -60,8 +84,7 @@ function Home() {
                 </NavLinks>
               </Buttons>
             )}
-            {/* </InnerDiv>
-          <InnerDiv> */}
+           
             {!signedIn && (
               <Buttons>
                 <NavLinks to="/login" exact activeStyle={{ color: "green" }}>
