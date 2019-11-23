@@ -1,13 +1,17 @@
 import React from 'react';
-import AddExercise from "../components/AddExercise";
 import PrivateRoute from "../components/PrivateRoute"
-import ExerciseCard from "./ExerciseCard"
 import JournalCard from "./JournalCard"
+import styled from "styled-components";
 
-function Dashboard(){
+const H1 = styled.h1`
+text-align: center
+`
+
+
+function Dashboard() {
     return (
         <div>
-            <h1>Dashboard</h1>
+            <H1>Dashboard</H1>
 
             <PrivateRoute exact path="/dashboard" component={JournalCard} />
 
