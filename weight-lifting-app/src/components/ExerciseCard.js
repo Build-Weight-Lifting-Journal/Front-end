@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
+
 const CardContainer = styled.div`
 background: linear-gradient(to bottom, #ce4f00 5%, #322f20 100%);
   background-color: #ce4f00;
@@ -119,12 +120,13 @@ function ExerciseCard(props) {
 	          padding: 0;
 	          cursor: pointer;
 	          outline: inherit;" onClick={e => handleDelete(e, workout.id)}>delete</button>
-           <button className="material-icons" Style="background: none;
+         <Link className="material-icons" to={`/restricted/exercises/${workout.id}`} Style="background: none;
 	         color: inherit;
 	         border: none;
         	 padding: 0;
 	         cursor: pointer;
-	         outline: inherit;" >edit</button>
+	         outline: inherit;" >edit</Link>
+           {/* <Link to={`/restricted/exercises/${workout.id}`}>Edit</Link> */}
           </Divider>
         </CardContainer>
       
