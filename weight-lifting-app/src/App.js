@@ -2,6 +2,7 @@ import React from "react";
 import { getToken } from "./utils/api";
 import { Route, NavLink, withRouter } from "react-router-dom";
 import "./App.css";
+import "./App.scss";
 
 import Dashboard from "./components/Dashboard";
 import Exercise from "./components/ExerciseCard"
@@ -15,6 +16,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import NewExercise from "./components/ExerciseForm";
+import CreateJournal from "./components/CreateJournal";
 import PrivateRoute from "./components/PrivateRoute";
 import Signup from "./components/SignUp";
 import UpdateExercise from "./components/Update";
@@ -34,6 +36,7 @@ function App() {
 
   return (
     <div>
+      <CreateJournal />
       <div className="App">
         <ul>
           <li>
