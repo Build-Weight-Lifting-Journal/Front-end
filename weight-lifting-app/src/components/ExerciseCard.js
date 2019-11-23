@@ -63,7 +63,7 @@ function ExerciseCard(props) {
       .catch(error => {
         console.log(error);
       });
-  }, [props.match.params.id]);
+  }, []);
 
   const handleDelete = (event, id) => {
     event.preventDefault();
