@@ -53,6 +53,19 @@ flex-wrap: wrap;
 justify-content: center;
 ` 
 
+const Links = styled(Link)`
+margin: 40px;
+padding: 5px;
+border: 1px solid black;
+text-decoration: none;
+background-color: #ce4f00;
+;
+`
+
+const H1 = styled.h1`
+text-align: center
+`
+
 
 function JournalCard(props) {
   const [journal, setJournals] = useState([]);
@@ -91,9 +104,10 @@ function JournalCard(props) {
 
   return (
     <>
-      <h1>Journal</h1>
-       <Link to={"/exercises"}>Exercises</Link>
-          <Link to={"/add-journal"}>Add</Link>
+      <H1>Journal</H1>
+     
+       <Links to={"/exercises"}>Exercises</Links>
+          <Links to={"/add-journal"}>Add</Links>
 <CardList>
       {journal.map(workout => (
         <CardContainer key={workout.id}>

@@ -50,6 +50,19 @@ flex-wrap: wrap;
 justify-content: center;
 ` 
 
+const H1 = styled.h1`
+text-align: center
+`
+
+const Links = styled(Link)`
+margin: 50px;
+padding: 5px;
+border: 1px solid black;
+text-decoration: none;
+background-color: #ce4f00;
+;
+`
+
 function ExerciseCard(props) {
   const [exercise, setExercise] = useState([]);
 
@@ -88,8 +101,8 @@ function ExerciseCard(props) {
 
   return (
     <>
-      <h1>Workout</h1>
-      <Link to={'/add-exercise'}>Add</Link>
+      <H1>Workout</H1>
+      <Links to={'/add-exercise'}>Add</Links>
 <CardList>
       {exercise.map(workout => (
       

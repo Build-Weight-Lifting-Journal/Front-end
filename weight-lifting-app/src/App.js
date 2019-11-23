@@ -54,7 +54,7 @@ function App() {
           {signedIn && (<NavLink to="/dashboard" exact activeStyle={{ color: "green" }}>
             Dashboard
             </NavLink>)}
-
+          <br/>
           {signedIn && (<NavLink to="/logout" exact activeStyle={{ color: "green" }}>
             Logout
             </NavLink>)}
