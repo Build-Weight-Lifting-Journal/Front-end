@@ -4,7 +4,6 @@ import * as yup from "yup";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { addTask } from "../actions/actions";
-
 const ExerciseForm = styled(Form)`
   display: flex;
   flex-flow: column wrap;
@@ -15,7 +14,6 @@ const ExerciseForm = styled(Form)`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   text-align: left;
 `;
-
 const Fields = styled(Field)`
   margin: 16px 0 16px 0;
   padding: 0.5rem;
@@ -25,7 +23,6 @@ const Fields = styled(Field)`
   border-radius: 4px;
   border: 1px solid #ccc;
 `;
-
 const Button = styled.button`
   box-shadow: 0px 10px 14px -7px #322f20;
   background: linear-gradient(to bottom, #ce4f00 5%, #322f20 100%);
@@ -47,16 +44,13 @@ const Button = styled.button`
     background-color: #322f20;
   }
 `;
-
 const NewExercise = ({ errors, touched, status }) => {
   const [exercise, setExercise] = useState([]);
-
   useEffect(() => {
     if (status) {
       setExercise([...exercise, status]);
     }
   }, [status]);
-
   return (
     <ExerciseForm>
       {touched.exercise && errors.exercise && (
@@ -70,19 +64,16 @@ const NewExercise = ({ errors, touched, status }) => {
           placeholder="Bench Press, Squats, Etc."
         />
       </label>
-
       {touched.reps && errors.reps && <p className="error">{errors.reps}</p>}
       <label>
         <span>Reps</span>
         <Fields type="number" name="reps" placeholder="10 reps" />
       </label>
-
       {touched.sets && errors.sets && <p className="error">{errors.sets}</p>}
       <label>
         <span>Sets</span>
         <Fields type="number" name="sets" placeholder="3" />
       </label>
-
       {touched.weight && errors.weight && (
         <p className="error">{errors.weight}</p>
       )}
@@ -90,12 +81,10 @@ const NewExercise = ({ errors, touched, status }) => {
         <span>Weight</span>
         <Fields type="number" name="weight" placeholder="100" />
       </label>
-
       <Button type="submit">Submit</Button>
     </ExerciseForm>
   );
 };
-
 const ExForm = withFormik({
   mapPropsToValues: values => {
     return {
@@ -137,11 +126,9 @@ const ExForm = withFormik({
     //   });
   }
 })(NewExercise);
-
 const mapStateToProps = state => {
   return {};
 };
-
 export default connect(
   mapStateToProps,
   { addTask }

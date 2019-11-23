@@ -4,6 +4,12 @@ import { Route, NavLink, withRouter } from "react-router-dom";
 import "./App.css";
 
 import Dashboard from "./components/Dashboard";
+import Exercise from "./components/ExerciseCard"
+
+// import { getToken } from "./utils/api";
+// import Exercise from "./components/ExerciseCard"
+// import AddExercise from "./components/AddExercise"
+import JournalCard from "./components/JournalCard";
 import ExerciseCard from "./components/ExerciseCard";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -73,6 +79,13 @@ function App() {
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/add-exercise" component={NewExercise} />
       <PrivateRoute exact path="/exercises" component={ExerciseCard} />
+      <Route path="/signup" exact component={Signup} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/user/:username" exact component={User} />
+     
+      {/* <Route path="/user/:username" exact component={User} /> */}
+      <PrivateRoute exact path="/dashboard" component={Exercise} />
+
       <PrivateRoute exact path="/logout" component={Logout} />
 
     </div>
