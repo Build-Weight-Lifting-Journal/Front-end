@@ -10,21 +10,23 @@ const CreateJournal = props => {
   });
 
   const handleChange = date => {
-    setNewJournal({ ...newJournal,
-            [date.target.name]: date.target.value });
+    setNewJournal({ ...newJournal, date: date });
   };
   const handleSubmit = e => {
     // e.preventDefault();
-    console.log(e)
-  axios
-  .post("https://get-hercules.herokuapp.com/api/restricted/journals/", newJournal)
-    .then(result => {
-                props.history.push("/dashboard");
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
+    console.log(e);
+    axios
+      .post(
+        "https://get-hercules.herokuapp.com/api/restricted/journals/",
+        newJournal
+      )
+      .then(result => {
+        props.history.push("/dashboard");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div className="field">
