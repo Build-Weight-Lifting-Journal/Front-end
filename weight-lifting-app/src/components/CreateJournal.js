@@ -13,13 +13,22 @@ const CreateJournal = props => {
     setNewJournal({ ...newJournal, date: date });
   };
   const handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log(e);
+    axios
+      .post(
+        "https://get-hercules.herokuapp.com/api/restricted/journals/",
+        newJournal
+      )
+      .then(result => {
+        props.history.push("/dashboard");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
-
-  axios.post("restricted/journals/", props);
-
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className="field">
         <div className="control">
           <DatePicker
@@ -42,11 +51,11 @@ const CreateJournal = props => {
         </div>
       </div>
       <div className="buttons">
-        <a className="button is-primary" onSubmit={handleSubmit}>
+        <a className="button is-primary" type="submit">
           Submit
         </a>
       </div>
-    </>
+    </form>
   );
 };
 

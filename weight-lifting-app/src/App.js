@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div>
-      <CreateJournal />
+      {/* <CreateJournal /> */}
       <div className="App">
         <ul>
           <li>
@@ -80,6 +80,7 @@ function App() {
       <Route exact path="/restricted/exercises/:id" component={UpdateExercise} />
       <Route path="/user/:username" exact component={User} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/add-journal" exact component={CreateJournal} /> 
       <PrivateRoute exact path="/add-exercise" component={NewExercise} />
       <PrivateRoute exact path="/exercises" component={ExerciseCard} />
       <PrivateRoute exact path="/logout" component={Logout} />
